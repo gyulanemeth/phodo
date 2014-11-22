@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+var auth = require("./auth");
 var mandrill = require("node-mandrill")('34HIAPGbpMUawVsgWNOU3g');
 var validator = require("validator");
 
@@ -11,9 +12,9 @@ module.exports = function(router, config) {
 		throw "config.pages should be an object!";
 	}
 
-	function servePage(req, res, page) {
+	function servePage(req, res, page, data) {
 		if (config.mode === "render") {
-			res.render(page, {errors: req.flash ? req.flash("error") : []});
+			res.render(page, {errors: req.flash ? req.flash("error") : [], data: data});
 		} else {
 			res.sendfile(page);
 		}
@@ -137,6 +138,10 @@ module.exports = function(router, config) {
 		config.authModel.findOneAndUpdate({_id: id}, {active: true}, function(err, result) {
 			servePage(req, res, confirmRegistrationFinished);
 		});
+	});
+
+	router.get("/invite", auth.middlewares.ensureAuthenticated, function(req, res) {
+		servePage(req, res, "invite", {link: "http://phodo.co/?ref=" + req.user._id});
 	});
 
 

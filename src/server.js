@@ -32,6 +32,8 @@ nappkit.createApp(function(app) {
 	
 	registration(app, appConfig);
 
+	
+
 	app.enable("trust proxy");
 });
 	
