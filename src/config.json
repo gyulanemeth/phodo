@@ -3,7 +3,7 @@
 	"debugMode": true,
 
 	"port": 3000,
-	"session": "memory",
+	"session": "redis",
 
 	"mongoUrl": "mongodb://localhost:27017/test",
 
