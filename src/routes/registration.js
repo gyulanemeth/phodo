@@ -16,7 +16,7 @@ module.exports = function(router, config) {
 
 	function servePage(req, res, page, data) {
 		if (config.mode === "render") {
-			res.render(page, {errors: req.flash ? req.flash("error") : [], data: data});
+			res.render(page, {errors: req.flash ? req.flash("error") : [], data: data, loggedIn: typeof req.user !== "undefined"});
 		} else {
 			res.sendfile(page);
 		}
