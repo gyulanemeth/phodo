@@ -1,10 +1,56 @@
-registration
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<meta charset="UTF-8" />
+<meta name="imagetoolbar" content="no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="MobileOptimized" content="320"/>
+<meta name="HandheldFriendly" content="true"/>
+<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta property="og:image" content="FBSHREURL"/>
+<meta name="dc.title" lang="en" content="" />
+<meta name="dc.description" lang="hu" content="" />
+<meta name="dclanguage" content="en" />
+<meta name="dc.publisher" content="" />
+<meta name="dc.coverage" content="World" />
+<meta name="dc.type" content="Text" />
+<meta name="dc.format" content="text/html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+<meta name="language" content="English">
+<title>PhoDo | Registration</title>
+<link rel="stylesheet" type="text/css" media="screen" href="/fonts/fonts.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/style.css" />
+<body id="register">
+<%- include _headNav.html %>
+<div id="subhead">
+	<div class="site">
+		<h1>Registration</h1>
+	</div>
+</div>
 
-<%- include flashMessages.html %>
+<div id="hull">
+	<div class="site">
+		<%- include flashMessages.html %>
 
-<form method="post" action="/register">
-	<input type="email" name="email" />
-	<input type="password" name="password" />
+		<form method="post" action="/register">
 
-	<input type="submit" value="register" />
-</form>
+			<div class="form-text">
+				<input type="email" name="email"
+					placeholder="E-mail" />
+			</div>
+			<div class="form-text">
+				<input type="password" name="password"
+					placeholder="Password" />
+			</div>
+
+			<button type="submit">Register</button>
+		</form>
+
+	</div>
+</div>
+
+</body>
+</html>

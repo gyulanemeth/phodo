@@ -1,11 +1,54 @@
-<div>
-	<%= data.link %>
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<meta charset="UTF-8" />
+<meta name="imagetoolbar" content="no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="MobileOptimized" content="320"/>
+<meta name="HandheldFriendly" content="true"/>
+<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta property="og:image" content="FBSHREURL"/>
+<meta name="dc.title" lang="en" content="" />
+<meta name="dc.description" lang="hu" content="" />
+<meta name="dclanguage" content="en" />
+<meta name="dc.publisher" content="" />
+<meta name="dc.coverage" content="World" />
+<meta name="dc.type" content="Text" />
+<meta name="dc.format" content="text/html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+<meta name="language" content="English">
+<title>PhoDo | Registration</title>
+<link rel="stylesheet" type="text/css" media="screen" href="/fonts/fonts.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/style.css" />
+<body id="register">
+<%- include _headNav.html %>
+<div id="subhead">
+	<div class="site">
+		<h1>Invite your friends</h1>
+	</div>
 </div>
-<div id="fb-share">
-	<a target="_blank" href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=<%= data.link %>&amp;p[images][0]=http://phodo.co/img/logo.png&amp;p[title]=Phodo%2C%20the%20visual%20to-do%20list&amp;p[summary]=Phodo%20allows%20you%20to%20create%20visual%20to-do%20lists%2C%20using%20photos%20you%20take%2C%20or%20photos%20sourced%20from%20the%20cloud."><img src="http://mindofatul.files.wordpress.com/2013/02/995501-facebook-share.gif"></a>
+
+<div id="hull">
+	<div class="site">
+
+		<div>
+			<%= data.link %>
+		</div>
+		<div id="fb-share">
+			<a target="_blank" href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=<%= data.link %>&amp;p[images][0]=http://phodo.co/img/logo.png&amp;p[title]=Phodo%2C%20the%20visual%20to-do%20list&amp;p[summary]=Phodo%20allows%20you%20to%20create%20visual%20to-do%20lists%2C%20using%20photos%20you%20take%2C%20or%20photos%20sourced%20from%20the%20cloud."><img src="http://mindofatul.files.wordpress.com/2013/02/995501-facebook-share.gif"></a>
+		</div>
+		<div id="tweet">
+		</div>
+		<div>
+			<%- include _paypalButton.html %>
+		</div>
+
+
+	</div>
 </div>
-<div id="tweet">
-</div>
-<div>
-	<%- include paypalButton.html %>
-</div>
+
+</body>
+</html>
