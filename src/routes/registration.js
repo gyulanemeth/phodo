@@ -1,3 +1,5 @@
+var fs = require("fs");
+
 var mongoose = require("mongoose");
 var auth = require("./auth");
 var mandrill = require("node-mandrill")('34HIAPGbpMUawVsgWNOU3g');
@@ -103,19 +105,22 @@ module.exports = function(router, config) {
 
 		function sendConfirmRegistrationEmail(_id, email) {
 			res.render("confirmRegistrationEmailSent");
-			mandrill("/messages/send", {
-			    message: {
-			        to: [{email: email}],
-			        from_email: 'no-reply@phodo.co',
-			        subject: "Confrim your registration at phodo.co",
-			        text: "Hello, your special link is: http://" + req.headers.host + "/register/" + _id
-			    }
-			}, function(error, response) {
-			    //uh oh, there was an error
-			    if (error) console.log( JSON.stringify(error) );
 
-			    //everything's good, lets see what mandrill said
-			    else console.log(response);
+			fs.readFile("email-templates/registration-email.html", 'utf8', function onRead(err, html){
+				mandrill("/messages/send", {
+					    message: {
+					        to: [{email: email}],
+					        from_email: 'no-reply@phodo.co',
+					        subject: "Confirm your registration at phodo.co",
+					        html: html.replace(/#confirmurl/g, "http://" + req.headers.host + "/register/" + _id)
+					    }
+				}, function(error, response) {
+					//uh oh, there was an error
+					if (error) console.log( JSON.stringify(error) );
+
+					//everything's good, lets see what mandrill said
+					else console.log(response);
+				});
 			});
 		}
 
@@ -142,6 +147,29 @@ module.exports = function(router, config) {
 
 	router.get("/invite", auth.middlewares.ensureAuthenticated, function(req, res) {
 		servePage(req, res, "invite", {link: "http://phodo.co/?ref=" + req.user._id});
+	});
+
+	router.post("/invite", auth.middlewares.ensureAuthenticated, function(req, res) {
+		//doooo
+
+		fs.readFile("email-templates/invitation.html", 'utf8', function onRead(err, html){
+			mandrill("/messages/send", {
+			    message: {
+			        to: [{email: req.body.email}],
+			        from_email: 'no-reply@phodo.co',
+			        subject: "Your friend has invited you to phodo.co",
+			        html: html.replace(/#redeemurl/g, "http://" + req.headers.host + "/?ref=" + req.user._id)
+			    }
+			}, function(error, response) {
+			    //uh oh, there was an error
+			    if (error) console.log( JSON.stringify(error) );
+
+			    //everything's good, lets see what mandrill said
+			    else console.log(response);
+
+			    servePage(req, res, "invite", {message: "Invitation sent.", link: "http://phodo.co/?ref=" + req.user._id});
+			});
+		});
 	});
 
 	router.get("/thanks", function(req, res) {
