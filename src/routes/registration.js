@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+var auth = require("./auth");
 var mandrill = require("node-mandrill")('34HIAPGbpMUawVsgWNOU3g');
 var validator = require("validator");
 
@@ -11,16 +12,17 @@ module.exports = function(router, config) {
 		throw "config.pages should be an object!";
 	}
 
-	function servePage(req, res, page) {
+	function servePage(req, res, page, data) {
 		if (config.mode === "render") {
-			res.render(page, {errors: req.flash ? req.flash("error") : []});
+			res.render(page, {errors: req.flash ? req.flash("error") : [], data: data});
 		} else {
 			res.sendfile(page);
 		}
 	}
 
 	var registrationPage = "./public/register.html";
-	var confirmRegistrationPage = "./public/confirmRegistration.html";
+	var confirmRegistrationPage = "./public/confirmRegistrationEmailSent.html";
+	var confirmRegistrationFinished = "./public/confirmRegistrationFinished.html";
 	var forgotPasswordPage = "./public/forgotPasswordPage.html";
 
 	if (typeof config.pages.registration === "string") {
@@ -29,6 +31,10 @@ module.exports = function(router, config) {
 
 	if (typeof config.pages.confirmRegistration === "string") {
 		confirmRegistrationPage = config.pages.confirmRegistration;
+	}
+
+	if (typeof config.pages.confirmRegistrationFinished === "string") {
+		confirmRegistrationFinished = config.pages.confirmRegistrationFinished;
 	}
 
 	if (typeof config.pages.forgotPassword === "string") {
@@ -96,13 +102,13 @@ module.exports = function(router, config) {
 		}
 
 		function sendConfirmRegistrationEmail(_id, email) {
-			res.render("confirmRegistration");
+			res.render("confirmRegistrationEmailSent");
 			mandrill("/messages/send", {
 			    message: {
 			        to: [{email: email}],
-			        from_email: 'no-reply@awesomeness.co',
-			        subject: "Confrim your registration at awesomeness.co",
-			        text: "Hello, your special link is: http://" + req.headers.host + "/confirm/" + _id
+			        from_email: 'no-reply@phodo.co',
+			        subject: "Confrim your registration at phodo.co",
+			        text: "Hello, your special link is: http://" + req.headers.host + "/register/" + _id
 			    }
 			}, function(error, response) {
 			    //uh oh, there was an error
@@ -126,22 +132,20 @@ module.exports = function(router, config) {
 		//finally: reg email sent page...
 	});
 
-	router.get("/confirm-registration/:token", function(req, res) {
-		var token = req.route.params.token;
-		//the token can be the id of the user
+	router.get("/register/:id", function(req, res) {
+		var id = req.route.params.id;
 
-		//login the user
-
-		servePage(req, res, confirmRegistrationPage);
+		config.authModel.findOneAndUpdate({_id: id}, {active: true}, function(err, result) {
+			servePage(req, res, confirmRegistrationFinished);
+		});
 	});
 
-	router.get("/register/:token", function(req, res) {
-		var token = req.route.params.token;
-		//the token can be the id of the user
+	router.get("/invite", auth.middlewares.ensureAuthenticated, function(req, res) {
+		servePage(req, res, "invite", {link: "http://phodo.co/?ref=" + req.user._id});
+	});
 
-		//login the user
-
-		//servePage(req, res, confirmRegistration);
+	router.get("/thanks", function(req, res) {
+		servePage(req, res, "thanks");
 	});
 
 
@@ -162,7 +166,8 @@ function createRedirectFunction(redirectTo) {
 }
 
 function checkEmailValidity(emailAddress) {
-	return validator.isEmail(emailAddress);
+	return true;
+	//return validator.isEmail(emailAddress);
 }
 
 function registerMe(req, res) {
