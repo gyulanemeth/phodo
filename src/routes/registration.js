@@ -111,7 +111,7 @@ module.exports = function(router, config) {
 					    message: {
 					        to: [{email: email}],
 					        from_email: 'no-reply@phodo.co',
-					        subject: "Confrim your registration at phodo.co",
+					        subject: "Confirm your registration at phodo.co",
 					        html: html.replace(/#confirmurl/g, "http://" + req.headers.host + "/register/" + _id)
 					    }
 				}, function(error, response) {
