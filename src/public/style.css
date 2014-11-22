@@ -1,0 +1,19 @@
+html, body { padding:0; margin:0; font-size:10px; font-family: Arial, sans-serif;}
+div, p, ul, li { padding:0; margin:0; }
+
+html { background:#000; color:#fff;}
+body {
+	text-align:center;
+	color:#ffffff;
+}
+
+h1 {
+	font-family: 'Open Sans', Arial, sans-serif;
+}
+a {
+	color:#ffffff;
+}
+
+@media only screen and (max-width: 980px) and (min-width: 190px) {
+	html {background: #ffffff;}
+}
