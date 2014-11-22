@@ -21,7 +21,8 @@ nappkit.createApp(function(app) {
 			loggedOut: "index",
 
 			registration: "registration",
-			registrationFinished: "confirmRegistration",
+			confirmRegistration: "confirmRegistrationEmailSent",
+			confirmRegistrationFinished: "confirmRegistrationFinished",
 
 			forgotPassword: "forgotPassword"
 		}
