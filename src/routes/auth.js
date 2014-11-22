@@ -37,9 +37,9 @@ function addRoutes (router, config) {
 		loggedOutIndex = config.pages.loggedOut;
 	}
 
-	function servePage(res, page) {
+	function servePage(req, res, page) {
 		if (config.mode === "render") {
-			res.render(page);
+			res.render(page, {loggedIn: typeof req.user !== "undefined"});
 		} else {
 			res.sendfile(page);
 		}
@@ -47,7 +47,7 @@ function addRoutes (router, config) {
 
 
 	function serveLogin(req, res) {
-		servePage(res, loginPath);
+		servePage(req, res, loginPath);
 	}
 
 	function serveIndex(req, res) {
@@ -60,16 +60,16 @@ function addRoutes (router, config) {
 		if (req.isAuthenticated()) {
 			if (config.adminServer === true) {
 				ensureAdmin(req, res, function() {
-					servePage(res, loggedInIndex);
+					servePage(req, res, loggedInIndex);
 				});
 			} else {
-				servePage(res, loggedInIndex);
+				servePage(req, res, loggedInIndex);
 			}
 		} else {
 			if (loggedOutIndex === null) {
 				res.redirect("/login");
 			} else {
-				servePage(res, loggedOutIndex);
+				servePage(req, res, loggedOutIndex);
 			}
 		}
 	}
