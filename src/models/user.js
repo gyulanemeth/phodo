@@ -11,6 +11,7 @@ var userSchema = new Schema({
 	password:		{type: String, required: true},
 
 	ref:			{type: String, default: ""},
+	donated:		{type: Boolean, default: false},
 
 	admin:			{type: Boolean, default: false},
 

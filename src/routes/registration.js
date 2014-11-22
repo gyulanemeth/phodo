@@ -144,6 +144,10 @@ module.exports = function(router, config) {
 		servePage(req, res, "invite", {link: "http://phodo.co/?ref=" + req.user._id});
 	});
 
+	router.get("/thanks", function(req, res) {
+		servePage(req, res, "thanks");
+	});
+
 
 	router.get("/forgot-password/", createRedirectFunction("/forgot-password"));
 	router.get("/forgot-password", function(req, res) {
