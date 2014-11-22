@@ -1,0 +1,12 @@
+registration
+
+<%= ref %>
+
+<%- include flashMessages.html %>
+
+<form method="post" action="/register">
+	<input type="email" name="email" />
+	<input type="password" name="password" />
+
+	<input type="submit" value="register" />
+</form>

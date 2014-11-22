@@ -1,0 +1,19 @@
+{
+	"testMode": true,
+	"debugMode": true,
+
+	"port": 3000,
+	"session": "memory",
+
+	"mongoUrl": "mongodb://localhost:27017/test",
+
+	"appHost": "yoman.co",
+
+	"redis": {
+		"session": {
+			"url": "127.0.0.1",
+			"port": 6379,
+			"pass": ""
+		}
+	}
+}
