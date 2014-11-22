@@ -29,6 +29,7 @@
 		"connect-flash": "",
 		"node-mandrill": "",
 		"validator": "",
+		"ejs": "",
 
 		"nappkit": "",
 
