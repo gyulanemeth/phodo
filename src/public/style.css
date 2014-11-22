@@ -4,15 +4,124 @@ div, p, ul, li { padding:0; margin:0; }
 html { background:#ffffff; color:#000000;}
 body {
 	text-align:center;
-	color:#ffffff;
+	color:#000000;
+}
+.site {
+	width: 900px;
+	margin: 0 auto;
 }
 
 h1 {
 	font-family: 'Open Sans', Arial, sans-serif;
+	color:#ffffff;
+	font-size: 34px;
+	line-height: 55px;
+	font-weight: bold;
+	text-align:center;
 }
+
+h1 span {
+	display:block;
+	font-weight:normal;
+}
+
+h1 span b {
+	font-weight:normal;
+	color:#7eb82b;
+}
+
 a {
+	color:#7eb82b;
+}
+
+img {
+	border: 3px solid #eeeeee;
+	display:block;
+}
+
+#logo {
+	width: 151px;
+	height: 203px;
+	display:block;
+	position:Relative;
+	overflow:Hidden;
+	margin:0 auto 110px;
+}
+#logo .fir {
+	position: absolute;
+	display:block;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+	background: url(img/phodo_logo_web.png) 0 0 no-repeat;
+}
+
+#nav {
+	height: 100px;
+	background: #ffffff;
+	border-bottom:1px solid #959595;
+}
+
+#nav #actions {
+	float:right;
+	padding: 40px 20px;
+}
+
+#nav .button {
+	padding: 8px 24px;
+	background:#ffffff;
+	color:#7eb82b;
+	border: 2px solid #7eb82b;
+	text-decoration: none;
+	margin-left: 20px;
+	font-weight:bold;
+}
+
+#nav .button:hover {
+	color:#ffffff;
+	background: #7eb82b;
 
 }
+
+#logo-small {
+	width: 60px;
+	height: 80px;
+	display:block;
+	position:Relative;
+	overflow:Hidden;
+	margin:10px;
+	float:left;
+}
+#logo-small .fir {
+	position: absolute;
+	display:block;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+	background: url(img/phodo_logo_web_60.png) 0 0 no-repeat;
+}
+
+#landing #logo-small { display:none; }
+
+
+#head {
+	background: url(img/bg1.jpg) center top no-repeat;
+	padding: 80px 0 210px;
+}
+
+.topic { padding: 70px 0px; }
+.topic p { font-size 14px; line-height: 21px; padding: 21px 0;}
+
+.toleft p { text-align: left; }
+.toleft img { float:left; margin: 21px 30px 30px 0; }
+
+.toright p { text-align: right; }
+.toright img { float:right; margin: 21px 0 30px 30px; }
+
+.tocenter p { text-align: center;}
+.tocenter img { margin:21px auto 30px;}
 
 @media only screen and (max-width: 980px) and (min-width: 190px) {
 	html {background: #ffffff;}
