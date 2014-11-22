@@ -29,5 +29,6 @@ Thumbs.db
 /db/*.sqlite3-journal
 /log/*.log
 /tmp
+/node_modules/*
 .*
 !/.gitignore
