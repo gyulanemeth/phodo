@@ -1,5 +1,12 @@
-<div>
+<div id="statistics">
+</div>
+<div id="email">
+	<div>Your invitation link:</div>
 	<%= data.link %>
+	<form method="post" action="invite">
+		<input type="email" name="email" />
+		<input type="submit" value="Invite" />
+	</form>
 </div>
 <div id="fb-share">
 	<a target="_blank" href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=<%= data.link %>&amp;p[images][0]=http://phodo.co/logo.png&amp;p[title]=Phodo, the visual to-do list&amp;p[summary]=Phodo allows you to create visual to-do lists, using photos you take, or photos sourced from the cloud."><img src="http://mindofatul.files.wordpress.com/2013/02/995501-facebook-share.gif"></a>
