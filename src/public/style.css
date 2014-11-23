@@ -1,6 +1,5 @@
-html, body { padding:0; margin:0; font-size:14px; font-family: Arial, sans-serif;}
+html, body, h1, h2, h3, h4, h5, h6 { padding:0; margin:0; font-size:14px; font-family: Arial, sans-serif;}
 div, p, ul, li { padding:0; margin:0; }
-p {font-size: large;}
 .clr {height:0px;overflow:hidden; clear:both;}
 
 html { background:#ffffff; color:#000000;}
@@ -30,6 +29,14 @@ h1 span {
 h1 span b {
 	font-weight:normal;
 	color:#7eb82b;
+}
+
+h2 {
+	font-family: 'Open Sans', Arial, sans-serif;
+	color:#ffffff;
+	font-size: 27px;
+	line-height: 39px;
+	padding-top: 15px;
 }
 
 a {
@@ -151,7 +158,13 @@ img {
 }
 
 .topic { padding: 70px 0px; }
+/*
 .topic p { font-size 14px; line-height: 21px; padding: 21px 0;}
+*/
+
+.topic h2 { font-family: 'Open Sans', Arial, sans-serif; font-size: 27px; line-height: 39px; font-weight:normal; color:#7eb82b; }
+.topic p { font-family: 'Open Sans', Arial, sans-serif; font-size: 19px; line-height: 27px; padding: 11px 0 21px;}
+
 .topic img { max-width: 280px; width: 100%; max-height: 280px; height: 100%; }
 
 
@@ -163,6 +176,11 @@ img {
 
 .tocenter p { text-align: center;}
 .tocenter img { margin:21px auto 30px;}
+
+#solution {
+	padding:30px;
+	background:#eeeeee;
+}
 
 #foot .site {
 	padding-top:40px;
@@ -246,6 +264,7 @@ form button {
 		margin: 0px !important;
 	}
 
+	.topic { padding-bottom: 30px;}
 	.topic img { margin:0 auto 30px !important; float:none !important; clear:both;}
 	.topic p { text-align:center; }
 
