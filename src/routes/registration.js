@@ -82,7 +82,7 @@ module.exports = function(router, config) {
 			new config.authModel({
 				email:		req.body.email,
 				password:	req.body.password,
-				ref:		req.session.ref
+				ref:		req.session ? req.session.ref : undefined
 			}).save(function(err, result) {
 				if (err) {
 					req.flash("error", "Could not save user. DB error 1.");
@@ -104,7 +104,7 @@ module.exports = function(router, config) {
 		}
 
 		function sendConfirmRegistrationEmail(_id, email) {
-			res.render("confirmRegistrationEmailSent");
+			servePage(req, res, "confirmRegistrationEmailSent");
 
 			fs.readFile("email-templates/registration-email.html", 'utf8', function onRead(err, html){
 				mandrill("/messages/send", {
