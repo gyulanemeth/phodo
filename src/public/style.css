@@ -182,6 +182,10 @@ img {
 	background:#eeeeee;
 }
 
+#fb-share {
+	margin-bottom:50px;
+}
+
 #foot .site {
 	padding-top:40px;
 	padding-bottom:40px;
@@ -206,8 +210,23 @@ img {
 	border: 0px none !important;
 	outline: 0px none !important;
 }
+.msg {
+	padding:30px;
+	font-size: 18px;
+	font-weight:bold;
+	font-family: 'Open Sans', Arial, sans-serif;
+	color:#959595;
 
-form button {
+}
+
+.contextual-text {
+	padding:20px;
+	font-size: 18px;
+	font-family: 'Open Sans', Arial, sans-serif;
+}
+
+form button,
+#fbshare_button{
 	padding: 10px 0px;
 	max-width: 300px;
 	width: 100%;	
@@ -222,7 +241,10 @@ form button {
 	border: 0px none !important;
 	outline: 0px none !important;
 	cursor:pointer;
+	text-decoration:none;
 }
+
+#fbshare_button { display: inline-block;}
 
 
 @media only screen and (max-width: 980px) and (min-width: 500px) {
@@ -269,7 +291,8 @@ form button {
 	.topic p { text-align:center; }
 
 	.form-text,
-	form button {
+	form button,
+	#fbshare_button {
 		max-width: 100%;	
 	}
 
